@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using System.Threading;
 
-
-namespace MIS321_PA2
-{
-    class Program
+                                            
+namespace MIS321_PA2                        // i have Thread.Sleep() methods all throughout the code
+{                                           // it just takes a pause from executing the code 
+    class Program                           // so it looks and plays smooth
     {
         static void Main(string[] args)
         {
+            Welcome();
             List<Character> characterList = new List<Character>();
             characterList = GetCharacters();
             StartBattle(characterList);
         }
 
-        static List<Character> GetCharacters()
-        {
-            List<Character> characterList = new List<Character>();
+        static List<Character> GetCharacters()  //gets name and character choice
+        {                                       //and creates the object
+            List<Character> characterList = new List<Character>(); 
             Console.WriteLine("Enter the name for Player 1.");
             string playerName1 = Console.ReadLine();
             Console.WriteLine("Enter the name for Player 2.");
@@ -91,9 +92,9 @@ namespace MIS321_PA2
                 Console.WriteLine($"\n{playerName2} has chosen Davy Jones!");
             }
 
-            if(temp == true)
-            {
-                if(userCharacterChoice1 == 1)
+            if(temp == true)                            // whoever is selected to go first will be
+            {                                           // put into the List<> first so they are in
+                if(userCharacterChoice1 == 1)           // array[0] and the other is in array[1]
                 {
                     JackSparrow player1 = new JackSparrow(){name = playerName1};
                     characterList.Add(player1);
@@ -164,16 +165,16 @@ namespace MIS321_PA2
                     characterList.Add(player2);
                 }
             }
-    return characterList;
+    return characterList; //returns <List> to main
         }
 
-        static int GetUserChoice()
+        static int GetUserChoice()      // gets user choice and returns and int
         {
             return int.Parse(Console.ReadLine());
         }
 
-        static bool WhichPlayerGoesFirst()
-        {
+        static bool WhichPlayerGoesFirst()      // 50/50 num generator
+        {                                       // generates a 0 or 1
             Random random = new Random();
             int randomNum = random.Next(2);
 
@@ -189,14 +190,14 @@ namespace MIS321_PA2
             } 
         }
 
-        static void DisplayCharacters()
+        static void DisplayCharacters()     // displays the list of characters for selection
         {
             Console.WriteLine("\nCHARACTER LIST: \n1. JACK SPARROW\n2. WILL TURNER\n3. DAVY JONES");
         }
 
         static void StartBattle(List<Character> characters)
         {
-            Character player1 = characters[0];
+            Character player1 = characters[0];  //this is the player that was selected to go first
             Character player2 = characters[1];
             int roundCount = 1;
 
@@ -208,7 +209,7 @@ namespace MIS321_PA2
             {
                 
                 Console.WriteLine("");
-                Console.WriteLine($"Round {roundCount}:");
+                Console.WriteLine($"Round {roundCount}:");  //this will update with each round
                 Thread.Sleep(2000);
                 Console.WriteLine($"{player1.name} will now attack.");
                 Thread.Sleep(1000);
@@ -275,8 +276,9 @@ namespace MIS321_PA2
                 player2.health = player2.health - damageDealt;
 
                 Thread.Sleep(1000);
-                Console.WriteLine($"\n{player1.name}'s attack dealt {damageDealt} damage!");
+                Console.WriteLine($"\n{player1.name}'s attack dealt {damageDealt} damage! (Attack Power: {player1.attackStrength})");
                 Thread.Sleep(1000);
+                Console.WriteLine($"{player2.name}'s health falls to {player2.health}! (Defensive Power: {player2.defensivePower})");
 
                 if(player2.health < 1)
                 {
@@ -352,7 +354,9 @@ namespace MIS321_PA2
 
                 player1.health = player1.health - damageDealt;
                 Thread.Sleep(1000);
-                Console.WriteLine($"\n{player2.name}'s attack dealt {damageDealt} damage!");
+                Console.WriteLine($"\n{player2.name}'s attack dealt {damageDealt} damage! (Attack Power: {player2.attackStrength})");
+                Thread.Sleep(1000);
+                Console.WriteLine($"{player1.name}'s health falls to {player1.health}! (Defensive Power: {player1.defensivePower})");
 
                 if(player1.health < 1)
                 {
@@ -368,13 +372,13 @@ namespace MIS321_PA2
             }
         }
 
-        static void AttackMenu()
+        static void AttackMenu()    //menu displayed when user's turn to attack
         {
             Thread.Sleep(500);
             Console.WriteLine("\nYou are attacking. Please make your choice:\n1. ATTACK\n2. VIEW MY STATS\n3. VIEW ENEMY STATS");
         }
 
-        static void DefendMenu()
+        static void DefendMenu()    //menu displayed when user's turn to defend
         {
             Thread.Sleep(500);
             Console.WriteLine("\nYou are defending. Please make your choice:\n1. DEFEND\n2. VIEW MY STATS\n3. VIEW ENEMY STATS");
@@ -382,13 +386,12 @@ namespace MIS321_PA2
 
         static int AttackSequence(Character attacker, Character defender)
         {
-            double attackStrengthDouble = Convert.ToDouble(attacker.attackStrength);
-            double defensivePowerDouble = Convert.ToDouble(defender.defensivePower);
-            
-            double temp = attackStrengthDouble/defensivePowerDouble;
+            double attackStrengthDouble = Convert.ToDouble(attacker.attackStrength);    //this logic was suggested by Anne in teams
+            double defensivePowerDouble = Convert.ToDouble(defender.defensivePower);    //damage is equal to the percentages between the two stats
+            double temp = attackStrengthDouble/defensivePowerDouble;                    //attacker's strength & defender's defensive power
             double damageDealt = temp * defensivePowerDouble;
 
-            if(attacker.type == "Jack Sparrow" && defender.type == "Will Turner")
+            if(attacker.type == "Jack Sparrow" && defender.type == "Will Turner")       //type bonuses
             {
                 damageDealt = damageDealt * 1.2;
             }
@@ -407,6 +410,18 @@ namespace MIS321_PA2
                 returnDamage = 1;
             }
             return returnDamage;
+        }
+
+        static void Welcome()   //welcome message/instructions
+        {
+            Console.WriteLine("\nWelcome to the Battle of Calypso's Maelstrom! This is a turn-based dueling game between two user players. When making a character, users will select between 3 classes:\nJACK SPARROW\tWILL SILVER\tDAVY JONES\n");
+            Console.WriteLine("These classes have different attacks, and will gain type bonuses versus one another.\nBONUSES:\nJack Sparrow +20% damage against Will Silver\nWill Silver +20% damage against Davy Jones\nDavy Jones +20% damage versus Jack Sparrow\n\n");
+            Console.WriteLine("Attack order will be randomly selected, and the game will continue until one player character reaches 0 health.\n");
+
+            Thread.Sleep(3000);
+            Console.WriteLine("\nPress any key to start the game.");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
