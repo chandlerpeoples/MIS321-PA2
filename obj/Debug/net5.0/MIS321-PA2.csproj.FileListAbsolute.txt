@@ -1,0 +1,16 @@
+C:\Users\chand\MIS321-PA2\bin\Debug\net5.0\MIS321-PA2.exe
+C:\Users\chand\MIS321-PA2\bin\Debug\net5.0\MIS321-PA2.deps.json
+C:\Users\chand\MIS321-PA2\bin\Debug\net5.0\MIS321-PA2.runtimeconfig.json
+C:\Users\chand\MIS321-PA2\bin\Debug\net5.0\MIS321-PA2.runtimeconfig.dev.json
+C:\Users\chand\MIS321-PA2\bin\Debug\net5.0\MIS321-PA2.dll
+C:\Users\chand\MIS321-PA2\bin\Debug\net5.0\ref\MIS321-PA2.dll
+C:\Users\chand\MIS321-PA2\bin\Debug\net5.0\MIS321-PA2.pdb
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\MIS321-PA2.csproj.AssemblyReference.cache
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\MIS321-PA2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\MIS321-PA2.AssemblyInfoInputs.cache
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\MIS321-PA2.AssemblyInfo.cs
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\MIS321-PA2.csproj.CoreCompileInputs.cache
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\MIS321-PA2.dll
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\ref\MIS321-PA2.dll
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\MIS321-PA2.pdb
+C:\Users\chand\MIS321-PA2\obj\Debug\net5.0\MIS321-PA2.genruntimeconfig.cache
